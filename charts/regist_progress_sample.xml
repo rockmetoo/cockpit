@@ -1,0 +1,233 @@
+<chart>
+
+	<axis_category margin='false' shadow='low' size='11' alpha='75' />
+	<axis_value alpha='0' />
+
+	<chart_border top_thickness='1' bottom_thickness='2' left_thickness='1' right_thickness='1' />              
+	<chart_data>
+		<row>
+			<null/>
+			<string>2004</string>
+			<string>Feb</string>
+			<string>Mar</string>
+			<string>Apr</string>
+			<string>May</string>
+			<string>Jun</string>
+			<string>Jul</string>
+			<string>Aug</string>
+			<string>Sep</string>
+			<string>Oct</string>
+			<string>Nov</string>
+			<string>Dec</string>
+			<string>2005</string>
+			<string>Feb</string>
+			<string>Mar</string>
+			<string>Apr</string>
+			<string>May</string>
+			<string>Jun</string>
+			<string>Jul</string>
+			<string>Aug</string>
+			<string>Sep</string>
+			<string>Oct</string>
+			<string>Nov</string>
+			<string>Dec</string>
+			<string>2006</string>
+			<string>Feb</string>
+			<string>Mar</string>
+			<string>Apr</string>
+			<string>May</string>
+			<string>Jun</string>
+			<string>Jul</string>
+			<string>Aug</string>
+			<string>Sep</string>
+			<string>Oct</string>
+			<string>Nov</string>
+			<string>Dec</string>
+			<string>2007</string>
+			<string>Feb</string>
+			<string>Mar</string>
+			<string>Apr</string>
+			<string>May</string>
+			<string>Jun</string>
+			<string>Jul</string>
+			<string>Aug</string>
+			<string>Sep</string>
+			<string>Oct</string>
+			<string>Nov</string>
+			<string>Dec</string>
+			<string>2008</string>
+			<string>Feb</string>
+			<string>Mar</string>
+			<string>Apr</string>
+			<string>May</string>
+			<string>Jun</string>
+			<string>Jul</string>
+			<string>Aug</string>
+			<string>Sep</string>
+			<string>Oct</string>
+			<string>Nov</string>
+			<string>Dec</string>
+			<string>2009</string>
+		</row>
+		<row>
+			<string>region A</string>
+			<number shadow='data'>5</number>
+			<number>6</number>
+			<number>5</number>
+			<number>7</number>
+			<number>10</number>
+			<number>11</number>
+			<number>10</number>
+			<number>12</number>
+			<number>15</number>
+			<number>16</number>
+			<number>28</number>
+			<number>29</number>
+			<number note='TV Ad'>40</number>
+			<number>41</number>
+			<number>45</number>
+			<number>50</number>
+			<number>65</number>
+			<number>45</number>
+			<number>50</number>
+			<number>51</number>
+			<number>65</number>
+			<number>60</number>
+			<number>62</number>
+			<number>65</number>
+			<number>45</number>
+			<number>55</number>
+			<number>59</number>
+			<number>52</number>
+			<number>53</number>
+			<number>40</number>
+			<number>45</number>
+			<number>32</number>
+			<number>35</number>
+			<number>40</number>
+			<number note='TV Ad'>42</number>
+			<number>35</number>
+			<number>36</number>
+			<number>31</number>
+			<number>35</number>
+			<number>36</number>
+			<number>40</number>
+			<number>42</number>
+			<number>40</number>
+			<number>38</number>
+			<number>40</number>
+			<number>40</number>
+			<number>38</number>
+			<number>36</number>
+			<number>30</number>
+			<number>29</number>
+			<number>28</number>
+			<number>25</number>
+			<number>28</number>
+			<number>29</number>
+			<number>30</number>
+			<number>60</number>
+			<number>32</number>
+			<number>33</number>
+			<number>34</number>
+			<number>30</number>
+			<number>32</number>
+		</row>
+		<row>
+			<string>region B</string>
+			<number shadow='data'>15</number>
+			<number>15</number>
+			<number>17</number>
+			<number>20</number>
+			<number>21</number>
+			<number>17</number>
+			<number>18</number>
+			<number>15</number>
+			<number>17</number>
+			<number>18</number>
+			<number>20</number>
+			<number>21</number>
+			<number>20</number>
+			<number>19</number>
+			<number>20</number>
+			<number>20</number>
+			<number>38</number>
+			<number>36</number>
+			<number>30</number>
+			<number>29</number>
+			<number>28</number>
+			<number>25</number>
+			<number>28</number>
+			<number>29</number>
+			<number>30</number>
+			<number>40</number>
+			<number>32</number>
+			<number>33</number>
+			<number>34</number>
+			<number>30</number>
+			<number>35</number>
+			<number>12</number>
+			<number>11</number>
+			<number>15</number>
+			<number>20</number>
+			<number>22</number>
+			<number>21</number>
+			<number>25</number>
+			<number>31</number>
+			<number>32</number>
+			<number>28</number>
+			<number>29</number>
+			<number>40</number>
+			<number>41</number>
+			<number>45</number>
+			<number note='TV Ad'>50</number>
+			<number>45</number>
+			<number>45</number>
+			<number>50</number>
+			<number>51</number>
+			<number>60</number>
+			<number>60</number>
+			<number>62</number>
+			<number>65</number>
+			<number>45</number>
+			<number>55</number>
+			<number>59</number>
+			<number>52</number>
+			<number>53</number>
+			<number>40</number>
+			<number>40</number>
+		</row>
+	</chart_data>
+	<chart_grid_h alpha='30' thickness='1' type='dotted' />
+	<chart_grid_v alpha='7' thickness='1' />
+	<chart_guide vertical='true' horizontal='true' thickness='1' color='0' alpha='25' type='dashed' snap_h='true' snap_v='true' radius='3' fill_alpha='75' fill_color='FF4400' line_thickness='0' text_h_alpha='90' text_v_alpha='90' background_color='cccc66' size='10' />
+	<chart_note type='lance' size='11' color='000000' alpha='70' x='0' y='-12' background_color_1='ff4400' background_alpha='90' shadow='low' />
+	<chart_pref line_thickness='2' point_shape='none' fill_shape='false' />
+	<chart_rect bevel='chart' shadow='high' height='100' positive_color='ffffee' positive_alpha='90' x='115' width='250' />
+	<chart_type>line</chart_type>
+
+	<draw>
+		<rect bevel='bg' layer='background' x='0' y='0' width='480' height='300' fill_color='868871' line_thickness='0' />
+		<text shadow='low' layer='background' color='ffffff' alpha='15' size='76' x='40' y='175' width='500' height='200'>production</text>
+		<text shadow='low' layer='background' color='99cccc' alpha='40' size='83' x='40' y='222' width='500' height='200'>2004-2009</text>
+	</draw>
+	
+	<filter>
+		<shadow id='high' distance='5' angle='45' alpha='35' blurX='10' blurY='10' />
+		<shadow id='low' distance='2' angle='45' alpha='35' blurX='5' blurY='5' />
+		<shadow id='data' distance='1' angle='45' alpha='15' blurX='2' blurY='2' />
+		<bevel id='bg' angle='180' blurX='200' blurY='200' distance='50' highlightAlpha='15' shadowAlpha='15' type='inner' />
+		<bevel id='chart' angle='45' blurX='50' blurY='50' distance='25' highlightAlpha='15' shadowAlpha='10' type='full' />
+	</filter>
+	
+	<context_menu full_screen='false' />   
+	<scroll x='69' y='70' width='343' height='81' url_button_1_idle='images/arrow_L_idle.gif' url_button_2_idle='images/arrow_R_idle.gif' url_button_1_press='images/arrow_L_press.gif' url_button_2_press='images/arrow_R_press.gif' button_length='46' start='40' span='27' drag='true' button_speed='2' />
+
+	<legend shadow='data' size='12' x='116' y='38' width='249' height='18' bullet='circle' color='ffffff' fill_alpha='20' />
+
+	<series_color>
+		<color>99cccc</color>
+		<color>eeaa55</color>
+	</series_color>
+
+	</chart>

@@ -1,0 +1,15 @@
+Dear Administrator,
+
+A new employer registration has been completed
+
+Check this out:
+----------------
+Username: {{username}}
+Referer: {{HTTP_REFERER}}
+Remote address: {{REMOTE_ADDR}}
+Browser Info: {{HTTP_USER_AGENT}}
+
+Cheers,
+IT God of EverConnect
+
+

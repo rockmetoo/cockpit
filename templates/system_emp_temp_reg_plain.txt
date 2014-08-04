@@ -1,0 +1,16 @@
+Dear Administrator,
+
+A new employer registration request is submitted
+
+Check this out:
+----------------
+Username: {{username}}
+Hash: {{hash}}
+Referer: {{HTTP_REFERER}}
+Remote address: {{REMOTE_ADDR}}
+Browser Info: {{HTTP_USER_AGENT}}
+
+Cheers,
+IT God of EverConnect
+
+

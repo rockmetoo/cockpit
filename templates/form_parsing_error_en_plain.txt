@@ -1,0 +1,13 @@
+Dear Bosses,
+
+Wouls you please take a look on the following FORM error:
+---------------------------------------------------------
+
+{{debug}}
+
+{{xml}}
+
+{{error}}
+
+Cheers,
+IT God of EverConnect

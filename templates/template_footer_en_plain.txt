@@ -1,0 +1,8 @@
+This email is confidential which is intended solely for the use of the individual or entity to whom
+they are addressed. Please do not reply to this email. If you have received this email by mistake,
+please inform us at below email address and delete the email from your inbox without making, distributing
+or retaining any copies of it.
+
+For any queries regarding COCKPIT, please feel free to mail at {{support}}
+
+Copyright {{establishment}} EverConnect. All rights reserved.

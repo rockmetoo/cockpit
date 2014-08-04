@@ -1,0 +1,16 @@
+Dear {{username}},
+
+We are glad to see you in EverConnect. Your registration with COCKPIT is confirmed.
+Now, you can sign in using following credentials as a winner:
+
+Username: {{username}}
+Password: {{password}}
+Primary Email: {{primary_email}}
+
+Please, note that, above credentials are important for your account in COCKPIT.
+Don't share these information with unauthorized person. 
+
+Sincerely yours,
+EverConnect - your friendly company
+
+

@@ -1,0 +1,15 @@
+Dear {{username}},
+
+We are glad to see you in EverConnect. Please, click the following link or
+copy-paste to your favourite browser and confirm your registration
+process with COCKPIT:
+
+<a target="_blank" href="{{hashlink}}">{{hashlink}}</a>
+
+Please, note that, if you don't access to the above URL within 48 hours
+after receiving this mail, your registration process will be invalidated.
+
+Sincerely yours,
+EverConnect - your friendly company
+
+

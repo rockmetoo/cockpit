@@ -1,0 +1,8 @@
+///robots.txt file for http://www.seismis.com/
+//mail info@seismis.com for constructive criticism
+
+User-agent: *
+Disallow: 
+
+User-agent: e-SocietyRobot
+Disallow: /
