@@ -83,21 +83,21 @@
 		'2' => 'Oauth'
 	);
 	
-	/*$SMITH_APPLICATION_PROTOCOL = array(
+	/*$COCKPIT_APPLICATION_PROTOCOL = array(
 		'1'		=> 'XCAP',
 		'2'		=> 'Binary',
 		'3'		=> 'Raw Binary',
 		'4'		=> 'TLV'
 	);*/
 	
-	$SMITH_TRANSPORT_PROTOCOL = array(
+	$COCKPIT_TRANSPORT_PROTOCOL = array(
 		'1'		=> 'TCP',
 		'2'		=> 'UDP',
 		'3'		=> 'ICMP',
 		'4'		=> 'ARP'
 	);
 	
-	$SMITH_TCP_CONTROL_BITS = array(
+	$COCKPIT_TCP_CONTROL_BITS = array(
 		'1'		=> 'ACK',
 		'2'		=> 'PSH',
 		'3'		=> 'RST',
@@ -187,9 +187,9 @@
 	);
 	
 	$MACHINEDATA_CONTROL_PANEL_SUB['CPU'] = array(
-		"cpuAddPlot.php"				=> "Add a CPU",
-		"cpuListPlot.php"				=> "List Of CPU",
-		"cpuPlotResultStat.php"			=> "Result Statistics"
+		"monitaAddCPU.php"				=> "Add a CPU",
+		"monitaCPUList.php"				=> "List Of CPU",
+		"monitaCPUResultStat.php"		=> "Result Statistics"
 	);
 	
 	$MACHINEDATA_CONTROL_PANEL_SUB['Memory'] = array(

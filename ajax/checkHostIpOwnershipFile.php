@@ -5,7 +5,7 @@
 	include_once 'CDBHttpTestPlot.php';
 	include_once 'CHelperFunctions.php';
 	
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	if(ALLOWED_REFERRER !== ''
 		&& (!isset($_SERVER['HTTP_REFERER']) || strpos(strtoupper($_SERVER['HTTP_REFERER']),
@@ -38,7 +38,7 @@
 			
 			$foo		= CDBHttpTestPlot::getHttpTestPlotByName($plotName);
 			$urlParts	= parse_url($foo['baseAddress']);
-			$fileName	= md5($SMITH_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
+			$fileName	= md5($COCKPIT_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
 			
 			$host		= isset($urlParts['host']) ? $urlParts['host'] : $foo['baseAddress'];
 			

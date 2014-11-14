@@ -7,7 +7,7 @@
 	<div id="content">
 		<div id="header">
 	<?php
-		if(!$SMITH_SYSTEM_DEF['userId']){ ?>
+		if(!$COCKPIT_SYSTEM_DEF['userId']){ ?>
 			<form action="signin.php" method="post" name="index" id="index" target="_self">
 		    	<ul class="top_login">
 					<div class="right">
@@ -42,7 +42,7 @@
 	<?php } ?>
 			<ul class="header_list1">
 				<?php
-				if(!$SMITH_SYSTEM_DEF['userId']){ ?>
+				if(!$COCKPIT_SYSTEM_DEF['userId']){ ?>
 					<li class="first"><?php echo $lang->get('sign up'); ?>:</li>
 					<li><a href="signup.php"><?php echo $lang->get('employer'); ?></a></li>
 				<?php }else{ ?>
@@ -50,9 +50,9 @@
 					<li>
 						<a href="
 							<?php
-								if($SMITH_SYSTEM_DEF['userId']) echo 'controlPanel.php';
+								if($COCKPIT_SYSTEM_DEF['userId']) echo 'controlPanel.php';
 								else echo 'index.php';
-							?>"><?php echo $SMITH_SYSTEM_DEF['username']; ?>
+							?>"><?php echo $COCKPIT_SYSTEM_DEF['username']; ?>
 						</a>
 					</li>
 					<li><a href="signout.php"><?php echo $lang->get('sign out'); ?></a></li>

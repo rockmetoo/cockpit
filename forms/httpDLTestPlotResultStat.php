@@ -54,7 +54,7 @@
 			$foo					= CDBHttpTestPlot::getHttpDLTestPlotByName($_POST['plotName']);
 			
 			// by default $overAllAnalyzedData contains last 5 records (cursor limit)
-			list($lastAnalyzedData, $overAllAnalyzedData) = CDBHttpTestPlot::getHttpDLTestPlotAnalyzedData($SMITH_SYSTEM_DEF['userId'], $_POST['plotName'], 5);
+			list($lastAnalyzedData, $overAllAnalyzedData) = CDBHttpTestPlot::getHttpDLTestPlotAnalyzedData($COCKPIT_SYSTEM_DEF['userId'], $_POST['plotName'], 5);
 			
 			$countOverAllAnalyzedData = count($overAllAnalyzedData);
 			

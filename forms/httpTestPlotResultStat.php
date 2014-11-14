@@ -45,15 +45,16 @@
 	
 	if(isset($_POST['submit']))
 	{
-		//Form has been submitted, validate the form
+		// Form has been submitted, validate the form
 		$processor = new CFormValidator($form);
+		
 		if($processor->validate())
 		{
 			$processor->returnData	= "";
 			$foo					= CDBHttpTestPlot::getHttpTestPlotByName($_POST['plotName']);
 			
 			// by default $overAllAnalyzedData contains last 5 records (cursor limit)
-			list($lastAnalyzedData, $overAllAnalyzedData) = CDBHttpTestPlot::getHttpTestPlotAnalyzedData($SMITH_SYSTEM_DEF['userId'], $_POST['plotName'], 5);
+			list($lastAnalyzedData, $overAllAnalyzedData) = CDBHttpTestPlot::getHttpTestPlotAnalyzedData($COCKPIT_SYSTEM_DEF['userId'], $_POST['plotName'], 5);
 			
 			$countOverAllAnalyzedData = count($overAllAnalyzedData);
 			

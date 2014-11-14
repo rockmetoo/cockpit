@@ -316,10 +316,10 @@
 		
 		public static function checkAccessLimit($value)
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			global $ACCESS_LIMIT_BY_ACCOUNT_TYPE;
 			
-			$accountType = CDBLogin::getAccountType($SMITH_SYSTEM_DEF['userId']);
+			$accountType = CDBLogin::getAccountType($COCKPIT_SYSTEM_DEF['userId']);
 			
 			if($accountType == 0) return false;
 			else
@@ -490,7 +490,7 @@
 		
 		public static function checkTCPControlBits($value)
 		{
-			global $SMITH_TCP_CONTROL_BITS;
+			global $COCKPIT_TCP_CONTROL_BITS;
 			
 			$controlBitsArray = explode(',', $value);
 			
@@ -500,7 +500,7 @@
 			{
 				$value = trim($value);
 				
-				if(!in_array($value, $SMITH_TCP_CONTROL_BITS))
+				if(!in_array($value, $COCKPIT_TCP_CONTROL_BITS))
 				{
 					return false;
 				}

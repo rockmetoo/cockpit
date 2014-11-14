@@ -2,11 +2,11 @@
     require_once('bootstrap.php');
 	header('HTTP/1.1 404 Not Found', true, 404);
 	require_once('CDBSession.php');
-	$SMITH_SYSTEM_DEF['section'] = "home";
+	$COCKPIT_SYSTEM_DEF['section'] = "home";
 	require_once('CHelperFunctions.php');
 	require_once('CLocalization.php');
-	$lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], '404.php');
-	require_once('includes/form_values_'.$SMITH_SYSTEM_DEF['lang'].'.php');
+	$lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], '404.php');
+	require_once('includes/form_values_'.$COCKPIT_SYSTEM_DEF['lang'].'.php');
 
 	$title = "404 Page Not Found Error";
 	global $mobile_agent;

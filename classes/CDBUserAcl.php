@@ -111,22 +111,22 @@
 		public static function setSpecificUserACL($userId, $acl_val){
 			
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
 			foreach($acl_val as $key => $service){
 				
 				$service_group_function = explode('|', $service);
 				
 				$db->duplicateOther(
-					'smith', 'userServiceAcl',
+					'cockpit', 'userServiceAcl',
 					array(
 						'userId' => $userId, 'serviceGroup' => $service_group_function[0],
 						'serviceFunction' => $service_group_function[1], 'active' => $service_group_function[2],
-						'createdBy' => $SMITH_SYSTEM_DEF['userId'], 'updatedBy' => $SMITH_SYSTEM_DEF['userId'],
+						'createdBy' => $COCKPIT_SYSTEM_DEF['userId'], 'updatedBy' => $COCKPIT_SYSTEM_DEF['userId'],
 						'dateCreated' => date("Y-m-d H:i:s"), 'dateUpdated' => date("Y-m-d H:i:s")
 					),
 					array(
-						'active' => $service_group_function[2], 'updatedBy' => $SMITH_SYSTEM_DEF['userId'],
+						'active' => $service_group_function[2], 'updatedBy' => $COCKPIT_SYSTEM_DEF['userId'],
 						'dateUpdated' => date("Y-m-d H:i:s")
 					)
 				);

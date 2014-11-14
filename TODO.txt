@@ -1,3 +1,14 @@
 1. check baseAddress for localhost and 127.0.0.1 -> this two are prohibited to set
 
 2. httpTriggerULTestPlot.php has an issue regarding ajax status check
+
+3. create token and token secret at user creation time and save those info in siteUser
+
+4. insert monitad infomation into mongodb at "recvMonitaData.php"
+
+#### IMPORTANT #####
+http://www.keynote.com/solutions/testing/load-testing
+http://lucene.apache.org/solr/
+http://www.nagios.org/
+http://logstash.net/
+http://www.fluentd.org/

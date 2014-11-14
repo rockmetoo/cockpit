@@ -1,6 +1,6 @@
 <?php
 
-	require_once('form/Form.php');
+	include_once 'form/Form.php';
 	
 	$allHttpTestPlotName = '<table class="theTable">' . CDBHttpTestPlot::getAllHttpTestPlotHtmlNameByUserId() . '</table>';
 	

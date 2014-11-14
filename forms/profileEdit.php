@@ -2,8 +2,8 @@
 
 	include_once 'form/Form.php';
 	
-	global $SMITH_USER_DEF;
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_USER_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 
 	$form_contents = new Form("profileEdit");
 	$form_contents->configure(array("action" => "profileEdit.php", "method" => "post"));
@@ -21,7 +21,7 @@
 		new Element_Textbox(
 			$lang->get('firstName') . ":", "firstName", "left"
 			, array(
-				"id"=>"firstName", "value"=> "" . CHelperFunctions::xmlEscape($SMITH_USER_DEF['firstName'])."",
+				"id"=>"firstName", "value"=> "" . CHelperFunctions::xmlEscape($COCKPIT_USER_DEF['firstName'])."",
 				"mandatory"=>"yes", "maxlength"=>"255"
 			)
 			, "<error for='firstName'>" . $lang->get('user first name') . "</error>"
@@ -32,7 +32,7 @@
 		new Element_Textbox(
 			$lang->get('lastName') . ":", "lastName", "right"
 			, array(
-				"id"=>"lastName", "value"=> "" . CHelperFunctions::xmlEscape($SMITH_USER_DEF['lastName'])."",
+				"id"=>"lastName", "value"=> "" . CHelperFunctions::xmlEscape($COCKPIT_USER_DEF['lastName'])."",
 				"mandatory"=>"yes", "maxlength"=>"255"
 			)
 			, "<error for='lastName'>" . $lang->get('user last name') . "</error>"
@@ -50,7 +50,7 @@
 			"Primary Email:", "primaryEmail", "left"
 			, array(
 				"id"=>"primaryEmail", "mandatory"=>"yes", "maxlength"=>"255",
-				"validate"=>"email", "value"=> "" . $SMITH_USER_DEF['primaryEmail'] . "",
+				"validate"=>"email", "value"=> "" . $COCKPIT_USER_DEF['primaryEmail'] . "",
 				"params"=>"6,255"
 			)
 			, "<error for='primaryEmail'>" . $lang->get('primary email error') . "</error>"
@@ -60,7 +60,7 @@
 	$form_contents->addElement(
 		new Element_Textbox(
 			"Tele Phone:", "telePhone", "left"
-			, array("id"=>"telePhone", "mandatory"=>"yes", "maxlength"=>"32", "value"=> "" . $SMITH_USER_DEF['telePhone'] . "")
+			, array("id"=>"telePhone", "mandatory"=>"yes", "maxlength"=>"32", "value"=> "" . $COCKPIT_USER_DEF['telePhone'] . "")
 			, "<error for='telePhone'>" . $lang->get('tele phone error') . "</error>"
 		)
 	);
@@ -68,7 +68,7 @@
 	$form_contents->addElement(
 		new Element_Textbox(
 			"Cell Phone:", "mobilePhone", "right"
-			, array("id"=>"mobilePhone", "maxlength"=>"32", "value"=> "" . $SMITH_USER_DEF['mobilePhone'] . "")
+			, array("id"=>"mobilePhone", "maxlength"=>"32", "value"=> "" . $COCKPIT_USER_DEF['mobilePhone'] . "")
 		)
 	);
 	
@@ -99,7 +99,7 @@
 			$_POST['telePhone']		= trim($_POST['telePhone']);
 			$_POST['mobilePhone']	= trim($_POST['mobilePhone']);
 			
-			CDBUser::setUserBasicProfile($SMITH_SYSTEM_DEF['userId'], $_POST, true);
+			CDBUser::setUserBasicProfile($COCKPIT_SYSTEM_DEF['userId'], $_POST, true);
 			$processor->error_no = 1;
 			$processor->error_msg = "Your Profile Information are Stored Successfully";
 		}

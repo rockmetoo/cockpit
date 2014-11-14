@@ -301,9 +301,9 @@
 		 */
 		public function __construct($form_ml, $doValidate=true, $entities=array())
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$this->lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], 'CFormValidator.php');
+			$this->lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], 'CFormValidator.php');
 			$this->_email = CSettings::$SYSTEM_MAIL_VALUES['tech'];
 			$this->_entities = array_merge($this->_entities, $entities);
 			$this->_form_ml = trim($form_ml);
@@ -829,7 +829,7 @@
 
 		private function _sendParserError($error_string, $error_line_num, $error_byte_num)
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
 			$keep = array(
 				'lang',
@@ -842,7 +842,7 @@
 				'SCRIPT_FILENAME'
 			);
 
-			$vars = array_intersect_key(array_merge($SMITH_SYSTEM_DEF, $_SERVER), array_flip($keep));
+			$vars = array_intersect_key(array_merge($COCKPIT_SYSTEM_DEF, $_SERVER), array_flip($keep));
 			ob_start();
 			var_dump($vars);
 			$vars = ob_get_contents();

@@ -2,7 +2,7 @@
 
 	require_once('bootstrap.php');
 	require_once('CDBSession.php');
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	// Only allow employers who are logged in to view this page
 	CDBSession::validateEmployer();
@@ -11,15 +11,15 @@
 	require_once('CFormValidator.php');
 	require_once('CHelperFunctions.php');
 	require_once('CUserMenu.php');
-	require_once('form_values_' . $SMITH_SYSTEM_DEF['lang'] . '.php');
+	require_once('form_values_' . $COCKPIT_SYSTEM_DEF['lang'] . '.php');
 	require_once('CLocalization.php');
-	$lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], 'ec_cockpit_user_settings.php');
+	$lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], 'ec_cockpit_user_settings.php');
 	
 	/********************* Employer Reseource Allocation ****************************/
 	
-	$COCKPIT_EMPLOYER_DEF = CDBUser::getEmployerDetails($SMITH_SYSTEM_DEF['user_id']);
-	$MY_AVAILABLE_SERVICE = CDBUser::getEmployerServiceACL($SMITH_SYSTEM_DEF['user_id']);
-	CDBUser::checkValidServiceACL($SMITH_SYSTEM_DEF['user_id'], $_SERVER['SCRIPT_NAME']);
+	$COCKPIT_EMPLOYER_DEF = CDBUser::getEmployerDetails($COCKPIT_SYSTEM_DEF['user_id']);
+	$MY_AVAILABLE_SERVICE = CDBUser::getEmployerServiceACL($COCKPIT_SYSTEM_DEF['user_id']);
+	CDBUser::checkValidServiceACL($COCKPIT_SYSTEM_DEF['user_id'], $_SERVER['SCRIPT_NAME']);
 	
 	/********************* Employer Reseource Allocation ****************************/
 
@@ -79,7 +79,7 @@
 									$emp_name = $COCKPIT_EMPLOYER_DEF['employer_name_en'];
 									echo $emp_name;
 								}else{
-									echo $SMITH_SYSTEM_DEF['username'];
+									echo $COCKPIT_SYSTEM_DEF['username'];
 								}
 							?>
 							</h2>

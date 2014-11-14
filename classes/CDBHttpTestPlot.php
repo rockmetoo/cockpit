@@ -11,10 +11,10 @@
 		public static function getAllHttpTestPlotNameByUserId()
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query = $db->quoteInto("SELECT plotName, plotStatus FROM httpTestPlot WHERE userId=%s AND isDeleted=0", array($SMITH_SYSTEM_DEF['userId']));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotName, plotStatus FROM httpTestPlot WHERE userId=%s AND isDeleted=0", array($COCKPIT_SYSTEM_DEF['userId']));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$data = array();
@@ -35,10 +35,10 @@
 		public static function getAllHttpDLTestPlotNameByUserId()
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT plotName, plotStatus FROM httpDownloadTestPlot WHERE userId=%s AND isDeleted=0", array($SMITH_SYSTEM_DEF['userId']));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotName, plotStatus FROM httpDownloadTestPlot WHERE userId=%s AND isDeleted=0", array($COCKPIT_SYSTEM_DEF['userId']));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$data = array();
@@ -59,14 +59,14 @@
 		public static function getAllHttpTestPlotHtmlNameByUserId($pageStart=0, $pageEnd=100)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
 			$query	= $db->quoteInto(
 				"SELECT plotName, plotStatus, hostIpOwnership FROM httpTestPlot WHERE userId=%s AND isDeleted=0 LIMIT $pageStart, $pageEnd",
-				array($SMITH_SYSTEM_DEF['userId'])
+				array($COCKPIT_SYSTEM_DEF['userId'])
 			);
 			
-			$res	= $db->queryOther('smith', $query);
+			$res	= $db->queryOther('cockpit', $query);
 			
 			if($res->num_rows)
 			{
@@ -82,7 +82,7 @@
 					// XXX: IMPORTANT - if 'hostIpOwnership' is not 1 then we must display that the plot host ip is not confirmed
 					if($foo['hostIpOwnership'] == 0)
 					{
-						$fileName	= md5($SMITH_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
+						$fileName	= md5($COCKPIT_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
 						$confirmOwnerShip = "&nbsp;<a href='#' class='checkHostOwnership' id='" . $foo['plotName'] . "|http'>[Check Ownership]</a>";
 						$plotStatus	= "<img src='../images/warning.png'></img>&nbsp;Host ownership not confirmed&nbsp;<a href='hostOwnerShipFile.php?fileName=" . $fileName . "&amp;plotName=" . $foo['plotName'] . "' target='_blank'>[Upload this file]</a>";
 						$plotStatus	.= $confirmOwnerShip;
@@ -133,14 +133,14 @@
 		public static function getAllHttpDLTestPlotHtmlNameByUserId($pageStart=0, $pageEnd=100)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
 			$query	= $db->quoteInto(
 				"SELECT plotName, plotStatus, hostIpOwnership FROM httpDownloadTestPlot WHERE userId=%s AND isDeleted=0 LIMIT $pageStart, $pageEnd",
-				array($SMITH_SYSTEM_DEF['userId'])
+				array($COCKPIT_SYSTEM_DEF['userId'])
 			);
 				
-			$res	= $db->queryOther('smith', $query);
+			$res	= $db->queryOther('cockpit', $query);
 				
 			if($res->num_rows)
 			{
@@ -156,7 +156,7 @@
 					// XXX: IMPORTANT - if 'hostIpOwnership' is not 1 then we must display that the plot host ip is not confirmed
 					if($foo['hostIpOwnership'] == 0)
 					{
-						$fileName			= md5($SMITH_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
+						$fileName			= md5($COCKPIT_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
 						$plotStatus			= "<img src='../images/warning.png'></img>&nbsp;Host ownership not confirmed&nbsp;<a href='httpDLHostOwnerShipFile.php?fileName=" . $fileName . "&amp;plotName=" . $foo['plotName'] . "' target='_blank'>[Upload this file]</a>";
 						$confirmOwnerShip	= "&nbsp;<a href='#' class='checkHostOwnership' id='" . $foo['plotName'] . "|http'>[Check Ownership]</a>";
 						$plotStatus			.= $confirmOwnerShip;
@@ -207,14 +207,14 @@
 		public static function getAllHttpULTestPlotHtmlNameByUserId($pageStart=0, $pageEnd=100)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
 			$query	= $db->quoteInto(
 				"SELECT plotName, plotStatus, hostIpOwnership FROM httpUploadTestPlot WHERE userId=%s AND isDeleted=0 LIMIT $pageStart, $pageEnd",
-				array($SMITH_SYSTEM_DEF['userId'])
+				array($COCKPIT_SYSTEM_DEF['userId'])
 			);
 		
-			$res	= $db->queryOther('smith', $query);
+			$res	= $db->queryOther('cockpit', $query);
 		
 			if($res->num_rows)
 			{
@@ -230,7 +230,7 @@
 					// XXX: IMPORTANT - if 'hostIpOwnership' is not 1 then we must display that the plot host ip is not confirmed
 					if($foo['hostIpOwnership'] == 0)
 					{
-						$fileName			= md5($SMITH_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
+						$fileName			= md5($COCKPIT_SYSTEM_DEF['userId'] . CSettings::$HOST_IP_OWNERSHIP_FILENAME_SALT) . ".html";
 						$plotStatus			= "<img src='../images/warning.png'></img>&nbsp;Host ownership not confirmed&nbsp;<a href='httpULHostOwnerShipFile.php?fileName=" . $fileName . "&amp;plotName=" . $foo['plotName'] . "' target='_blank'>[Upload this file]</a>";
 						$confirmOwnerShip	= "&nbsp;<a href='#' class='checkHostOwnership' id='" . $foo['plotName'] . "|http'>[Check Ownership]</a>";
 						$plotStatus			.= $confirmOwnerShip;
@@ -275,10 +275,10 @@
 		public static function getHttpTestPlotByName($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$query = $db->quoteInto("SELECT * FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT * FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -293,10 +293,10 @@
 		public static function getHttpDLTestPlotByName($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query = $db->quoteInto("SELECT * FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT * FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -311,10 +311,10 @@
 		public static function getHttpULTestPlotByName($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT * FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT * FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -332,7 +332,7 @@
 				
 			$query = $db->quoteInto("SELECT * FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($userId, $plotName));
 			
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -350,7 +350,7 @@
 		
 			$query = $db->quoteInto("SELECT * FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($userId, $plotName));
 				
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -368,7 +368,7 @@
 		
 			$query = $db->quoteInto("SELECT * FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($userId, $plotName));
 		
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -386,7 +386,7 @@
 			
 			$query = "SELECT totalHttpPlotExecuted FROM systemInfo WHERE id=1";
 			
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 				
 			if($res->num_rows)
 			{
@@ -403,11 +403,11 @@
 		public static function isHttpTestPlotExists($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query = $db->quoteInto("SELECT null FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
+			$query = $db->quoteInto("SELECT null FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
 			
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 			
 			if($res->num_rows)
 			{
@@ -422,11 +422,11 @@
 		public static function isHttpDLTestPlotExists($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT null FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
+			$query = $db->quoteInto("SELECT null FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
 				
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 				
 			if($res->num_rows)
 			{
@@ -441,11 +441,11 @@
 		public static function isHttpULTestPlotExists($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT null FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
+			$query = $db->quoteInto("SELECT null FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
 		
-			$res = $db->queryOther('smith', $query);
+			$res = $db->queryOther('cockpit', $query);
 		
 			if($res->num_rows)
 			{
@@ -460,10 +460,10 @@
 		public static function isHttpTestPlotAvailableByStatus($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query = $db->quoteInto("SELECT plotStatus FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotStatus FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -479,10 +479,10 @@
 		public static function isHttpDLTestPlotAvailableByStatus($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT plotStatus FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotStatus FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -498,10 +498,10 @@
 		public static function isHttpULTestPlotAvailableByStatus($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT plotStatus FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotStatus FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -517,10 +517,10 @@
 		public static function isHttpTestPlotHostIpOwnership($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT hostIpOwnership FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT hostIpOwnership FROM httpTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -536,10 +536,10 @@
 		public static function isHttpDLTestPlotHostIpOwnership($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT hostIpOwnership FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT hostIpOwnership FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -555,10 +555,10 @@
 		public static function isHttpULTestPlotHostIpOwnership($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT hostIpOwnership FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT hostIpOwnership FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			if($res->num_rows)
 			{
 				$foo = $res->fetch_assoc();
@@ -574,10 +574,10 @@
 		public static function getHttpTestPlotStatusByName($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT plotStatus, hostIpOwnership FROM  httpTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotStatus, hostIpOwnership FROM  httpTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 			
 			if($res->num_rows)
 			{
@@ -597,10 +597,10 @@
 		public static function getHttpDLTestPlotStatusByName($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT plotStatus, hostIpOwnership FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotStatus, hostIpOwnership FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 				
 			if($res->num_rows)
 			{
@@ -620,10 +620,10 @@
 		public static function getHttpULTestPlotStatusByName($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = $db->quoteInto("SELECT plotStatus, hostIpOwnership FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($SMITH_SYSTEM_DEF['userId'], $plotName));
-			$res = $db->queryOther('smith', $query);
+			$query = $db->quoteInto("SELECT plotStatus, hostIpOwnership FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s", array($COCKPIT_SYSTEM_DEF['userId'], $plotName));
+			$res = $db->queryOther('cockpit', $query);
 		
 			if($res->num_rows)
 			{
@@ -645,7 +645,7 @@
 			global $pad;
 			try
 			{
-				$controlCommand = CSettings::$SMITH_CMD_INDEX['COCKPITD_CMD_INDEX_HTTPD_STATUS'];
+				$controlCommand = CSettings::$COCKPIT_CMD_INDEX['COCKPITD_CMD_INDEX_HTTPD_STATUS'];
 				
 				require_once('CCrypt.php');
 				$crypt = new CCrypt();
@@ -675,12 +675,12 @@
 		
 		public static function triggerHttpTestPlotRunRequest($postData)
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			global $pad;
 			
 			try
 			{
-				$controlCommand = CSettings::$SMITH_CMD_INDEX['SMITH_CMD_INDEX_RUN_SPECIFIC_PLOT'];
+				$controlCommand = CSettings::$COCKPIT_CMD_INDEX['COCKPIT_CMD_INDEX_RUN_SPECIFIC_PLOT'];
 				
 				include_once 'CCrypt.php';
 				
@@ -689,14 +689,14 @@
 				
 				$sendCmdData = $controlCommandCrypted;
 				$sendCmdData .= "\0";
-				$sendCmdData .= $SMITH_SYSTEM_DEF['userId'];
+				$sendCmdData .= $COCKPIT_SYSTEM_DEF['userId'];
 				$sendCmdData .= "\0";
 				$sendCmdData .= $postData['plotName'];
 				$sendCmdData .= "\0";
 				$sendCmdData .= 'http';
 				$sendCmdData .= "\0";
 			
-				// Send run request to smith daemon
+				// Send run request to testerbrokerd daemon
 				$resultRcv = $pad->sendRaw('localhost', $sendCmdData, 20000);
 			
 				$splitFormat = array(4, 255, 1);
@@ -715,12 +715,12 @@
 		
 		public static function triggerHttpDLTestPlotRunRequest($postData)
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			global $pad;
 				
 			try
 			{
-				$controlCommand = CSettings::$SMITH_CMD_INDEX['SMITH_CMD_INDEX_RUN_SPECIFIC_DL_PLOT'];
+				$controlCommand = CSettings::$COCKPIT_CMD_INDEX['COCKPIT_CMD_INDEX_RUN_SPECIFIC_DL_PLOT'];
 		
 				include_once 'CCrypt.php';
 		
@@ -729,14 +729,14 @@
 		
 				$sendCmdData = $controlCommandCrypted;
 				$sendCmdData .= "\0";
-				$sendCmdData .= $SMITH_SYSTEM_DEF['userId'];
+				$sendCmdData .= $COCKPIT_SYSTEM_DEF['userId'];
 				$sendCmdData .= "\0";
 				$sendCmdData .= $postData['plotName'];
 				$sendCmdData .= "\0";
 				$sendCmdData .= 'httpdl';
 				$sendCmdData .= "\0";
 					
-				// Send run request to smith daemon
+				// Send run request to testerbrokerd daemon
 				$resultRcv = $pad->sendRaw('localhost', $sendCmdData, 20000);
 					
 				$splitFormat = array(4, 255, 1);
@@ -755,12 +755,12 @@
 		
 		public static function triggerHttpULTestPlotRunRequest($postData)
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			global $pad;
 		
 			try
 			{
-				$controlCommand = CSettings::$SMITH_CMD_INDEX['SMITH_CMD_INDEX_RUN_SPECIFIC_UL_PLOT'];
+				$controlCommand = CSettings::$COCKPIT_CMD_INDEX['COCKPIT_CMD_INDEX_RUN_SPECIFIC_UL_PLOT'];
 		
 				include_once 'CCrypt.php';
 		
@@ -769,14 +769,14 @@
 		
 				$sendCmdData = $controlCommandCrypted;
 				$sendCmdData .= "\0";
-				$sendCmdData .= $SMITH_SYSTEM_DEF['userId'];
+				$sendCmdData .= $COCKPIT_SYSTEM_DEF['userId'];
 				$sendCmdData .= "\0";
 				$sendCmdData .= $postData['plotName'];
 				$sendCmdData .= "\0";
 				$sendCmdData .= 'httpul';
 				$sendCmdData .= "\0";
 					
-				// Send run request to smith daemon
+				// Send run request to testerbrokerd daemon
 				$resultRcv = $pad->sendRaw('localhost', $sendCmdData, 20000);
 					
 				$splitFormat = array(4, 255, 1);
@@ -1065,7 +1065,7 @@
 			$analyzedData['plotName']		= $plotName;
 			$analyzedData['dateCreated']	= time(NULL);
 						
-			$res = $mongo->insert('smith', 'httpTestPlotReport', $analyzedData, array('w' => 1));
+			$res = $mongo->insert('cockpit', 'httpTestPlotReport', $analyzedData, array('w' => 1));
 			
 			if(is_array($res))
 			{
@@ -1083,7 +1083,7 @@
 			$analyzedData['plotName']		= $plotName;
 			$analyzedData['dateCreated']	= time(NULL);
 		
-			$res = $mongo->insert('smith', 'httpDownloadTestPlotReport', $analyzedData, array('w' => 1));
+			$res = $mongo->insert('cockpit', 'httpDownloadTestPlotReport', $analyzedData, array('w' => 1));
 				
 			if(is_array($res))
 			{
@@ -1101,7 +1101,7 @@
 			$analyzedData['plotName']		= $plotName;
 			$analyzedData['dateCreated']	= time(NULL);
 		
-			$res = $mongo->insert('smith', 'httpUploadTestPlotReport', $analyzedData, array('w' => 1));
+			$res = $mongo->insert('cockpit', 'httpUploadTestPlotReport', $analyzedData, array('w' => 1));
 		
 			if(is_array($res))
 			{
@@ -1156,10 +1156,10 @@
 		public static function createHttpTestPlot($insert)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$query	= $db->quoteInto('SELECT null FROM httpTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $insert['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM httpTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $insert['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 			
 			if($res->num_rows) return false;
 			
@@ -1210,7 +1210,7 @@
 			$insert['plotName'] = str_replace('|', '', $insert['plotName']);
 			
 			$data = array(
-				'userId'				=> $SMITH_SYSTEM_DEF['userId'],
+				'userId'				=> $COCKPIT_SYSTEM_DEF['userId'],
 				'plotName'				=> $insert['plotName'],
 				'type'					=> $insert['type'],
 				'method'				=> $insert['method'],
@@ -1235,7 +1235,7 @@
 				'dateUpdated'			=> date('Y-m-d H:i:s'),
 			);
 				
-			$id = $db->insertOther('smith', 'httpTestPlot', $data);
+			$id = $db->insertOther('cockpit', 'httpTestPlot', $data);
 			
 			return $id;
 		}
@@ -1243,10 +1243,10 @@
 		public static function createHttpDLTestPlot($insert)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query	= $db->quoteInto('SELECT null FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $insert['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $insert['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 				
 			if($res->num_rows) return false;
 				
@@ -1296,7 +1296,7 @@
 			$insert['plotName'] = str_replace('|', '', $insert['plotName']);
 				
 			$data = array(
-				'userId'				=> $SMITH_SYSTEM_DEF['userId'],
+				'userId'				=> $COCKPIT_SYSTEM_DEF['userId'],
 				'plotName'				=> $insert['plotName'],
 				'type'					=> $insert['type'],
 				'baseAddress'			=> $baseAddress,
@@ -1309,7 +1309,7 @@
 				'dateUpdated'			=> date('Y-m-d H:i:s')
 			);
 		
-			$id = $db->insertOther('smith', 'httpDownloadTestPlot', $data);
+			$id = $db->insertOther('cockpit', 'httpDownloadTestPlot', $data);
 				
 			return $id;
 		}
@@ -1317,10 +1317,10 @@
 		public static function createHttpULTestPlot($insert)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query	= $db->quoteInto('SELECT null FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $insert['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $insert['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 		
 			if($res->num_rows) return false;
 		
@@ -1372,10 +1372,10 @@
 		
 			$temp				= explode(".", $_FILES["File1"]["name"]);
 			$extension			= end($temp);
-			$uploadedFile		= md5($SMITH_SYSTEM_DEF['userId'] . $insert['plotName'] . 'httpUploadTestPlot') . "." . $extension;
+			$uploadedFile		= md5($COCKPIT_SYSTEM_DEF['userId'] . $insert['plotName'] . 'httpUploadTestPlot') . "." . $extension;
 			
 			$data = array(
-				'userId'				=> $SMITH_SYSTEM_DEF['userId'],
+				'userId'				=> $COCKPIT_SYSTEM_DEF['userId'],
 				'plotName'				=> $insert['plotName'],
 				'type'					=> $insert['type'],
 				'formType'				=> $insert['formType'],
@@ -1391,7 +1391,7 @@
 				'dateUpdated'			=> date('Y-m-d H:i:s')
 			);
 		
-			$id = $db->insertOther('smith', 'httpUploadTestPlot', $data);
+			$id = $db->insertOther('cockpit', 'httpUploadTestPlot', $data);
 			
 			// XXX: IMPORTANT - update php.ini settings for upload and post max size (10 MB max file size for upload)
 			move_uploaded_file($_FILES["File1"]["tmp_name"], CSettings::$UPLOAD_FILE_DIR . $uploadedFile);
@@ -1402,10 +1402,10 @@
 		public static function updateHttpTestPlot($post, $updateChangesOnly = false)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$query	= $db->quoteInto('SELECT null FROM httpTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $post['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM httpTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $post['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 			
 			if(!$res->num_rows) return false;
 			
@@ -1486,9 +1486,9 @@
 			{
 				$changes['dateUpdated'] = date('Y-m-d H:i:s');
 				
-				if($SMITH_SYSTEM_DEF['userId'])
+				if($COCKPIT_SYSTEM_DEF['userId'])
 				{
-					$changes['userId']		= $SMITH_SYSTEM_DEF['userId'];
+					$changes['userId']		= $COCKPIT_SYSTEM_DEF['userId'];
 					$changes['plotName']	= $post['plotName'];
 					$db->duplicateRemovePrimary('httpTestPlot', $changes, array('userId', 'plotName'), false);
 				}
@@ -1498,10 +1498,10 @@
 		public static function updateHttpDLTestPlot($post, $updateChangesOnly = false)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query	= $db->quoteInto('SELECT null FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $post['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM httpDownloadTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $post['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 		
 			if(!$res->num_rows) return false;
 				
@@ -1575,9 +1575,9 @@
 			{
 				$changes['dateUpdated'] = date('Y-m-d H:i:s');
 		
-				if($SMITH_SYSTEM_DEF['userId'])
+				if($COCKPIT_SYSTEM_DEF['userId'])
 				{
-					$changes['userId']		= $SMITH_SYSTEM_DEF['userId'];
+					$changes['userId']		= $COCKPIT_SYSTEM_DEF['userId'];
 					$changes['plotName']	= $post['plotName'];
 					$db->duplicateRemovePrimary('httpDownloadTestPlot', $changes, array('userId', 'plotName'), false);
 				}
@@ -1587,10 +1587,10 @@
 		public static function updateHttpULTestPlot($post, $plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query	= $db->quoteInto('SELECT null FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $post['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM httpUploadTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $post['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 		
 			if(!$res->num_rows) return false;
 		
@@ -1639,7 +1639,7 @@
 		
 			$temp				= explode(".", $_FILES["File1"]["name"]);
 			$extension			= end($temp);
-			$uploadedFile		= md5($SMITH_SYSTEM_DEF['userId'] . $post['plotName'] . 'httpUploadTestPlot') . "." . $extension;
+			$uploadedFile		= md5($COCKPIT_SYSTEM_DEF['userId'] . $post['plotName'] . 'httpUploadTestPlot') . "." . $extension;
 			
 			$changes['formType']				= $post['formType'];
 			$changes['queryData']				= trim($post['queryData']);
@@ -1648,9 +1648,9 @@
 			$changes['responseTimeoutLimit']	= $post['responseTimeoutLimit'];
 			$changes['dateUpdated']				= date('Y-m-d H:i:s');
 	
-			if($SMITH_SYSTEM_DEF['userId'])
+			if($COCKPIT_SYSTEM_DEF['userId'])
 			{
-				$changes['userId']		= $SMITH_SYSTEM_DEF['userId'];
+				$changes['userId']		= $COCKPIT_SYSTEM_DEF['userId'];
 				$changes['plotName']	= $plotName;
 				
 				$db->duplicateRemovePrimary('httpUploadTestPlot', $changes, array('userId', 'plotName'), false);
@@ -1665,9 +1665,9 @@
 		public static function deleteHttpTestPlot($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$db->updateOther('smith', 'httpTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'isDeleted' => 1,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1680,9 +1680,9 @@
 		public static function deleteHttpDLTestPlot($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$db->updateOther('smith', 'httpDownloadTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpDownloadTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'isDeleted' => 1,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1695,9 +1695,9 @@
 		public static function deleteHttpULTestPlot($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$db->updateOther('smith', 'httpUploadTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpUploadTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'isDeleted' => 1,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1708,9 +1708,9 @@
 		public static function undoDeleteHttpTestPlot($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$db->updateOther('smith', 'httpTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'isDeleted' => 0,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1721,9 +1721,9 @@
 		public static function undoDeleteHttpDLTestPlot($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$db->updateOther('smith', 'httpDownloadTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpDownloadTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'isDeleted' => 0,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1734,9 +1734,9 @@
 		public static function undoDeleteHttpULTestPlot($plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$db->updateOther('smith', 'httpUploadTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpUploadTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'isDeleted' => 0,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1748,7 +1748,7 @@
 		{
 			global $mongo;
 			
-			$cursor = $mongo->getAllData('smith', 'httpTestPlotReport', array('userId' => (int) $userId, 'plotName' => $plotName));
+			$cursor = $mongo->getAllData('cockpit', 'httpTestPlotReport', array('userId' => (int) $userId, 'plotName' => $plotName));
 			
 			// sort 'dateCreated' as descending
 			$cursor->sort(array('dateCreated' => -1));
@@ -1778,7 +1778,7 @@
 		{
 			global $mongo;
 				
-			$cursor = $mongo->getAllData('smith', 'httpDownloadTestPlotReport', array('userId' => (int) $userId, 'plotName' => $plotName));
+			$cursor = $mongo->getAllData('cockpit', 'httpDownloadTestPlotReport', array('userId' => (int) $userId, 'plotName' => $plotName));
 				
 			// sort 'dateCreated' as descending
 			$cursor->sort(array('dateCreated' => -1));
@@ -1808,7 +1808,7 @@
 		{
 			global $db;
 			
-			$db->updateOther('smith', 'httpTestPlot', array('userId' => $userId, 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpTestPlot', array('userId' => $userId, 'plotName' => $plotName),
 				0, array(
 					'plotStatus' => 3,
 					'noOfThreadExecuted' => 0,
@@ -1821,7 +1821,7 @@
 		{
 			global $db;
 				
-			$db->updateOther('smith', 'httpDownloadTestPlot', array('userId' => $userId, 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpDownloadTestPlot', array('userId' => $userId, 'plotName' => $plotName),
 				0, array(
 					'plotStatus' => 3,
 					'noOfThreadExecuted' => 0,
@@ -1834,7 +1834,7 @@
 		{
 			global $db;
 		
-			$db->updateOther('smith', 'httpUploadTestPlot', array('userId' => $userId, 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpUploadTestPlot', array('userId' => $userId, 'plotName' => $plotName),
 				0, array(
 					'plotStatus' => 3,
 					'noOfThreadExecuted' => 0,
@@ -1846,9 +1846,9 @@
 		public static function setHttpPlotHostIpOwnershipCode($hostIpOwnershipCode, $plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$db->updateOther('smith', 'httpTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'hostIpOwnershipCode' => $hostIpOwnershipCode,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1859,9 +1859,9 @@
 		public static function setHttpDLPlotHostIpOwnershipCode($hostIpOwnershipCode, $plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$db->updateOther('smith', 'httpDownloadTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpDownloadTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'hostIpOwnershipCode' => $hostIpOwnershipCode,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1872,9 +1872,9 @@
 		public static function setHttpULPlotHostIpOwnershipCode($hostIpOwnershipCode, $plotName)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$db->updateOther('smith', 'httpUploadTestPlot', array('userId' => $SMITH_SYSTEM_DEF['userId'], 'plotName' => $plotName),
+			$db->updateOther('cockpit', 'httpUploadTestPlot', array('userId' => $COCKPIT_SYSTEM_DEF['userId'], 'plotName' => $plotName),
 				0, array(
 					'hostIpOwnershipCode' => $hostIpOwnershipCode,
 					'dateUpdated' => date('Y-m-d H:i:s')
@@ -1885,11 +1885,11 @@
 		public static function setHostIpOwnershipConfirmed($baseAddress)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			$query = "UPDATE httpTestPlot SET hostIpOwnership = 1 where userId = '" . $SMITH_SYSTEM_DEF['userId'] . "' AND baseAddress like '". $baseAddress . "%'";
+			$query = "UPDATE httpTestPlot SET hostIpOwnership = 1 where userId = '" . $COCKPIT_SYSTEM_DEF['userId'] . "' AND baseAddress like '". $baseAddress . "%'";
 			
-			$db->queryOther('smith', $query);
+			$db->queryOther('cockpit', $query);
 			
 			return $query;
 		}
@@ -1897,11 +1897,11 @@
 		public static function setHttpDLHostIpOwnershipConfirmed($baseAddress)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query = "UPDATE httpDownloadTestPlot SET hostIpOwnership = 1 where userId = '" . $SMITH_SYSTEM_DEF['userId'] . "' AND baseAddress like '". $baseAddress . "%'";
+			$query = "UPDATE httpDownloadTestPlot SET hostIpOwnership = 1 where userId = '" . $COCKPIT_SYSTEM_DEF['userId'] . "' AND baseAddress like '". $baseAddress . "%'";
 				
-			$db->queryOther('smith', $query);
+			$db->queryOther('cockpit', $query);
 				
 			return $query;
 		}
@@ -1909,11 +1909,11 @@
 		public static function setHttpULHostIpOwnershipConfirmed($baseAddress)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 		
-			$query = "UPDATE httpUploadTestPlot SET hostIpOwnership = 1 where userId = '" . $SMITH_SYSTEM_DEF['userId'] . "' AND baseAddress like '". $baseAddress . "%'";
+			$query = "UPDATE httpUploadTestPlot SET hostIpOwnership = 1 where userId = '" . $COCKPIT_SYSTEM_DEF['userId'] . "' AND baseAddress like '". $baseAddress . "%'";
 		
-			$db->queryOther('smith', $query);
+			$db->queryOther('cockpit', $query);
 		
 			return $query;
 		}
@@ -1930,7 +1930,7 @@
 				
 				$sql = "UPDATE systemInfo SET totalHttpPlotExecuted = totalHttpPlotExecuted + $noOfThreadExecuted WHERE id = 1";
 				
-				$db->queryOther('smith', $sql);
+				$db->queryOther('cockpit', $sql);
 			}
 		}
 		
@@ -1946,7 +1946,7 @@
 		
 				$sql = "UPDATE systemInfo SET totalHttpDownloadPlotExecuted = totalHttpDownloadPlotExecuted + $noOfThreadExecuted WHERE id = 1";
 		
-				$db->queryOther('smith', $sql);
+				$db->queryOther('cockpit', $sql);
 			}
 		}
 		
@@ -1962,7 +1962,7 @@
 		
 				$sql = "UPDATE systemInfo SET totalHttpUploadPlotExecuted = totalHttpUploadPlotExecuted + $noOfThreadExecuted WHERE id = 1";
 		
-				$db->queryOther('smith', $sql);
+				$db->queryOther('cockpit', $sql);
 			}
 		}
 		

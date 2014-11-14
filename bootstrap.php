@@ -8,11 +8,11 @@
 	
 	define('ALLOWED_REFERRER', CSettings::$SYSTEM_DOMAIN_VALUES['ec_me']);
 	
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	// set language settings
-	if(isset($_REQUEST['lang'])) $SMITH_SYSTEM_DEF['lang'] = $_REQUEST['lang'];
-	if(!isset($SMITH_SYSTEM_DEF['lang'])) $COCKPIT_SYSTEM_DEF['lang'] = 'en';
+	if(isset($_REQUEST['lang'])) $COCKPIT_SYSTEM_DEF['lang'] = $_REQUEST['lang'];
+	if(!isset($COCKPIT_SYSTEM_DEF['lang'])) $COCKPIT_SYSTEM_DEF['lang'] = 'en';
 	
 	// IMPORTANT: 3 kinds of environment we have [local, staging, live]
 	// Set this in your web server virtual host config as: setEnv APPLICATION_ENV local
@@ -21,61 +21,61 @@
 	if(APPLICATION_ENV === 'local')
 	{
 		CSettings::$MYSQL_CONNECTION_POOL = array(
-			'smith'=>array('smith', 'root', '123456', 'smith', '3306', NULL),
+			'cockpit'=>array('cockpit', 'root', '123456', 'cockpit', '3306', NULL),
 			'siteUser'=>array('siteUser', 'root', '123456', 'siteUser', '3306', NULL),
 		);
 		
 		// host, port, user, password, db, persistence, connectionObject
 		CSettings::$MONGO_CONNECTION_POOL = array(
-			'smith' => array('127.0.0.1', '27017', '', '', 'smith', false, NULL),
-			'smith1' => array('127.0.0.1', '27017', '', '', 'smith1', false, NULL),
-			'smith2' => array('127.0.0.1', '27017', '', '', 'smith2', false, NULL),
-			'smith3' => array('127.0.0.1', '27017', '', '', 'smith3', false, NULL)
+			'cockpit' => array('127.0.0.1', '27017', '', '', 'cockpit', false, NULL),
+			'cockpit1' => array('127.0.0.1', '27017', '', '', 'cockpit1', false, NULL),
+			'cockpit2' => array('127.0.0.1', '27017', '', '', 'cockpit2', false, NULL),
+			'cockpit3' => array('127.0.0.1', '27017', '', '', 'cockpit3', false, NULL)
 		);
 	}
 	else if(APPLICATION_ENV === 'staging')
 	{
 		CSettings::$MYSQL_CONNECTION_POOL = array(
-			'smith'=>array('smith', 'root', '123456', 'smith', '3306', NULL),
+			'cockpit'=>array('cockpit', 'root', '123456', 'cockpit', '3306', NULL),
 			'siteUser'=>array('siteUser', 'root', '123456', 'siteUser', '3306', NULL),
 		);
 		
 		// host, port, user, password, db, persistence, connectionObject
 		CSettings::$MONGO_CONNECTION_POOL = array(
-			'smith' => array('127.0.0.1', '27017', '', '', 'smith', false, NULL),
-			'smith1' => array('127.0.0.1', '27017', '', '', 'smith1', false, NULL),
-			'smith2' => array('127.0.0.1', '27017', '', '', 'smith2', false, NULL),
-			'smith3' => array('127.0.0.1', '27017', '', '', 'smith3', false, NULL)
+			'cockpit' => array('127.0.0.1', '27017', '', '', 'cockpit', false, NULL),
+			'cockpit1' => array('127.0.0.1', '27017', '', '', 'cockpit1', false, NULL),
+			'cockpit2' => array('127.0.0.1', '27017', '', '', 'cockpit2', false, NULL),
+			'cockpit3' => array('127.0.0.1', '27017', '', '', 'cockpit3', false, NULL)
 		);
 	}
 	else if(APPLICATION_ENV === 'production')
 	{
 		CSettings::$MYSQL_CONNECTION_POOL = array(
-			'smith'=>array('smith', 'root', '123456', 'smith', '3306', NULL),
+			'cockpit'=>array('cockpit', 'root', '123456', 'cockpit', '3306', NULL),
 			'siteUser'=>array('siteUser', 'root', '123456', 'siteUser', '3306', NULL),
 		);
 		
 		// host, port, user, password, db, persistence, connectionObject
 		CSettings::$MONGO_CONNECTION_POOL = array(
-			'smith' => array('127.0.0.1', '27017', '', '', 'smith', false, NULL),
-			'smith1' => array('127.0.0.1', '27017', '', '', 'smith1', false, NULL),
-			'smith2' => array('127.0.0.1', '27017', '', '', 'smith2', false, NULL),
-			'smith3' => array('127.0.0.1', '27017', '', '', 'smith3', false, NULL)
+			'cockpit' => array('127.0.0.1', '27017', '', '', 'cockpit', false, NULL),
+			'cockpit1' => array('127.0.0.1', '27017', '', '', 'cockpit1', false, NULL),
+			'cockpit2' => array('127.0.0.1', '27017', '', '', 'cockpit2', false, NULL),
+			'cockpit3' => array('127.0.0.1', '27017', '', '', 'cockpit3', false, NULL)
 		);
 	}
 	else
 	{
 		CSettings::$MYSQL_CONNECTION_POOL = array(
-			'smith'=>array('smith', 'root', '123456', 'smith', '3306', NULL),
+			'cockpit'=>array('cockpit', 'root', '123456', 'cockpit', '3306', NULL),
 			'siteUser'=>array('siteUser', 'root', '123456', 'siteUser', '3306', NULL),
 		);
 		
 		// host, port, user, password, db, persistence, connectionObject
 		CSettings::$MONGO_CONNECTION_POOL = array(
-			'smith' => array('127.0.0.1', '27017', '', '', 'smith', false, NULL),
-			'smith1' => array('127.0.0.1', '27017', '', '', 'smith1', false, NULL),
-			'smith2' => array('127.0.0.1', '27017', '', '', 'smith2', false, NULL),
-			'smith3' => array('127.0.0.1', '27017', '', '', 'smith3', false, NULL)
+			'cockpit' => array('127.0.0.1', '27017', '', '', 'cockpit', false, NULL),
+			'cockpit1' => array('127.0.0.1', '27017', '', '', 'cockpit1', false, NULL),
+			'cockpit2' => array('127.0.0.1', '27017', '', '', 'cockpit2', false, NULL),
+			'cockpit3' => array('127.0.0.1', '27017', '', '', 'cockpit3', false, NULL)
 		);
 	}
 	

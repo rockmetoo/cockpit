@@ -9,7 +9,7 @@
 	class CDBQuery
 	{
 		private $connection			= NULL;
-		private $default_connection	= 'smith';
+		private $default_connection	= 'cockpit';
 		private $cache_deactivate	= false;
 		private $debug				= false;
 		private $debug_benchmark	= false;
@@ -79,9 +79,9 @@
 			
 			//Initialize and return the mysqli object
 			$mysqli = new mysqli(
-				CSettings::$MYSQL_CONNECTION_POOL[$conn][0], CSettings::$MYSQL_CONNECTION_POOL[$conn][1]
-				, CSettings::$MYSQL_CONNECTION_POOL[$conn][2], CSettings::$MYSQL_CONNECTION_POOL[$conn][3]
-				, CSettings::$MYSQL_CONNECTION_POOL[$conn][4]
+				CSettings::$MYSQL_CONNECTION_POOL[$conn][0], CSettings::$MYSQL_CONNECTION_POOL[$conn][1],
+			    CSettings::$MYSQL_CONNECTION_POOL[$conn][2], CSettings::$MYSQL_CONNECTION_POOL[$conn][3],
+			    CSettings::$MYSQL_CONNECTION_POOL[$conn][4]
 			);
 			
 			$mysqli->query("SET NAMES 'utf8'");
@@ -94,6 +94,11 @@
 			CSettings::$MYSQL_CONNECTION_POOL[$conn][5] = $mysqli;
 			
 			return $mysqli;
+		}
+		
+		public function getConnection($conn)
+		{
+			return CSettings::$MYSQL_CONNECTION_POOL[$conn][5];
 		}
 
 		public function deactivateCache()
@@ -115,10 +120,10 @@
 			$message .= "Request URI : " . $_SERVER['REQUEST_URI'] . "\n";
 			$message .= "Remote Addr : " . $_SERVER['REMOTE_ADDR'] . "\n";
 
-			if(isset($SMITH_SYSTEM_DEF))
+			if(isset($COCKPIT_SYSTEM_DEF))
 			{
 				ob_start();
-				print_r($SMITH_SYSTEM_DEF);
+				print_r($COCKPIT_SYSTEM_DEF);
 				$sess = ob_get_contents();
 				ob_end_clean();
 				@$trace = debug_backtrace();
@@ -156,6 +161,16 @@
 
 			$conn = $this->queryOther($connection, $query, false, 'con');
 			return $conn->insert_id;
+		}
+		
+		public function insertAndReturnConn($connection, $table, $param, $html=false)
+		{
+			foreach($param as $k=>$v) $param[$k] = $this->quoteInto('%s', sanitize($v, $html));
+			
+			$query	= "INSERT INTO $table (".implode(', ', array_keys($param)).") VALUES (".implode(', ', $param).")";
+			$conn	= $this->queryOther($connection, $query, false, 'con');
+			
+			return $conn;
 		}
 
 		public function duplicate($table, $insert, $update, $html=false)

@@ -1,9 +1,9 @@
 <?php
 
 	include_once 'CSettings.php';
-	require_once('CMail.php');
-	require_once('CDBQuery.php');
-	require_once('Net/UserAgent/Mobile.php');
+	include_once 'CMail.php';
+	include_once 'CDBQuery.php';
+	include_once 'Net/UserAgent/Mobile.php';
 
 	class CDBSession extends CDBQuery{
 
@@ -31,8 +31,8 @@
 
 		public static function sessionGetId(){
 			global $db;
-			global $SMITH;
-			$query = "SELECT sessionId FROM systemSession WHERE cookie='$SMITH'";
+			global $COCKPIT;
+			$query = "SELECT sessionId FROM systemSession WHERE cookie='$COCKPIT'";
 			$res = $db->queryOther('siteUser', $query);
 			if(!$res->num_rows){
 				return 0;
@@ -43,8 +43,8 @@
 
 		public static function sessionGetStatus(){
 			global $db;
-			global $SMITH;
-			$query = "SELECT userStatus FROM systemSession WHERE cookie='$SMITH'";
+			global $COCKPIT;
+			$query = "SELECT userStatus FROM systemSession WHERE cookie='$COCKPIT'";
 			$res = $db->queryOther('siteUser', $query);
 			if(!$res->num_rows){
 				return 0;
@@ -55,15 +55,15 @@
 
 		public static function sessionGetUserId(){
 			global $db;
-			global $SMITH;
-			global $SMITH_SESSION;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT;
+			global $COCKPIT_SESSION;
+			global $COCKPIT_SYSTEM_DEF;
 			global $mobile_agent;
-			if(!$SMITH || ($SMITH != $SMITH_SESSION && $mobile_agent->isNonMobile())){
+			if(!$COCKPIT || ($COCKPIT != $COCKPIT_SESSION && $mobile_agent->isNonMobile())){
 				return 0;
 				exit;
 			}
-			$query = "SELECT userId FROM systemSession WHERE sessionId='" . $SMITH_SYSTEM_DEF["sessionId"] . "'";
+			$query = "SELECT userId FROM systemSession WHERE sessionId='" . $COCKPIT_SYSTEM_DEF["sessionId"] . "'";
 			$res = $db->queryOther('siteUser', $query);
 			if(!$res->num_rows){
 				return 0;
@@ -73,23 +73,23 @@
 		}
 
 		public static function sessionLinkUserId($userId = 0, $user_status = 0, $permanent = 0){
-			global $SMITH;
+			global $COCKPIT;
 			global $db;
 			global $mobile_agent;
 			$db->updateOther(
-				'siteUser', 'systemSession', 'cookie', $SMITH, array('userId'=>$userId, 'userStatus'=>$user_status)
+				'siteUser', 'systemSession', 'cookie', $COCKPIT, array('userId'=>$userId, 'userStatus'=>$user_status)
 			);
 			if($mobile_agent->isNonMobile()){
 				//90 days cookie
-				if($permanent) setcookie("SMITH_SESSION", $SMITH, time() + 7776000, '/');
+				if($permanent) setcookie("COCKPIT_SESSION", $COCKPIT, time() + 7776000, '/');
 				//session cookie
-				else setcookie("SMITH_SESSION", $SMITH, 0, '/');
+				else setcookie("COCKPIT_SESSION", $COCKPIT, 0, '/');
 			}
 		}
 
 		public static function sessionSetCookie(){
 			global $db;
-			global $SMITH;
+			global $COCKPIT;
 			global $mobile_agent;
 			if(!$mobile_agent->isNonMobile() && $mobile_agent->getUID()){
 				$fulldomain = @gethostbyaddr($_SERVER['REMOTE_ADDR']);
@@ -102,43 +102,43 @@
    				if(preg_match("/[0-9]{1,3}\.[0-9]{1,3}/", $domain)){
 					$domain = $_SERVER['REMOTE_ADDR'];
 				}
-				$SMITH = sprintf('%s %s', $mobile_agent->getUID(), $domain);
+				$COCKPIT = sprintf('%s %s', $mobile_agent->getUID(), $domain);
 			}
-			if($SMITH && CDBSession::sessionCheckCookie($SMITH)){
+			if($COCKPIT && CDBSession::sessionCheckCookie($COCKPIT)){
 				$db->updateOther(
-					'siteUser', 'systemSession', 'cookie', $SMITH, array('lastSeen'=>date("Y-m-d H:i:s"))
+					'siteUser', 'systemSession', 'cookie', $COCKPIT, array('lastSeen'=>date("Y-m-d H:i:s"))
 				);
 				return true;
 			}
-			if(!$SMITH){
+			if(!$COCKPIT){
 				srand((double)microtime() * 1000000);
 				$loop = true;
 				while($loop == true){
-					$SMITH = md5(uniqid(rand()));
-					$query = "SELECT sessionId FROM systemSession WHERE cookie='$SMITH'";
+					$COCKPIT = md5(uniqid(rand()));
+					$query = "SELECT sessionId FROM systemSession WHERE cookie='$COCKPIT'";
 					$res = $db->queryOther('siteUser', $query);
 					if(!$res->num_rows) $loop=false;
 				}
-				setcookie("SMITH", $SMITH, (time() + 31536000), '/');
+				setcookie("COCKPIT", $COCKPIT, (time() + 31536000), '/');
 			}
 			$db->insertOther(
 				'siteUser', 'systemSession'
 				, array(
-					'cookie' => $SMITH, 'ip' => $_SERVER["REMOTE_ADDR"], 'lastSeen' => date("Y-m-d H:i:s")
+					'cookie' => $COCKPIT, 'ip' => $_SERVER["REMOTE_ADDR"], 'lastSeen' => date("Y-m-d H:i:s")
 				)
 			);
 		}
 
 		public static function sessionUnlinkUserId($userId){
 			global $db;
-			global $SMITH;
-			$db->updateOther('siteUser',  'systemSession', 'cookie', $SMITH, array('userId' => 0));
-			setcookie("SMITH_SESSION", "", time() - 3600);
-			setcookie("SMITH_SESSION", "", time() - 3600, "/");
+			global $COCKPIT;
+			$db->updateOther('siteUser',  'systemSession', 'cookie', $COCKPIT, array('userId' => 0));
+			setcookie("COCKPIT_SESSION", "", time() - 3600);
+			setcookie("COCKPIT_SESSION", "", time() - 3600, "/");
 		}
 
 		public static function validate(){
-			if(!isset($SMITH_SYSTEM_DEF["userId"])){
+			if(!isset($COCKPIT_SYSTEM_DEF["userId"])){
 				header('location: /login.php?loginto=' . $_SERVER['REQUEST_URI']);
 				exit;
 			}
@@ -152,9 +152,9 @@
 		 */
 		public static function validateUser($redirect = true){
 			
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			if(
-				!isset($SMITH_SYSTEM_DEF["userId"]) || $SMITH_SYSTEM_DEF["userId"] == 0
+				!isset($COCKPIT_SYSTEM_DEF["userId"]) || $COCKPIT_SYSTEM_DEF["userId"] == 0
 			){
 				if(!$redirect) return false;
 				header('location: signin.php?signinto=' . $_SERVER['REQUEST_URI']);
@@ -172,24 +172,24 @@
 		}
 	}
 
-	if(isset($_COOKIE["SMITH"])) $SMITH = $_COOKIE["SMITH"];
-	if(isset($_COOKIE["SMITH_SESSION"])) $SMITH_SESSION = $_COOKIE["SMITH_SESSION"];
+	if(isset($_COOKIE["COCKPIT"])) $COCKPIT = $_COOKIE["COCKPIT"];
+	if(isset($_COOKIE["COCKPIT_SESSION"])) $COCKPIT_SESSION = $_COOKIE["COCKPIT_SESSION"];
 	$mobile_agent = Net_UserAgent_Mobile::factory();
 	CDBSession::sessionSetCookie();
-	$SMITH_SYSTEM_DEF = array();
-	$SMITH_SYSTEM_DEF["sessionId"] = CDBSession::sessionGetId();
-	$SMITH_SYSTEM_DEF["userStatus"] = CDBSession::sessionGetStatus();
-	$SMITH_SYSTEM_DEF["cookie"] = $SMITH;
-	$SMITH_SYSTEM_DEF["userId"] = (int)CDBSession::sessionGetUserId();
-	$foo = CDBSession::getUserName($SMITH_SYSTEM_DEF['userId']);
-	$SMITH_SYSTEM_DEF["username"] = $foo['username'];
+	$COCKPIT_SYSTEM_DEF = array();
+	$COCKPIT_SYSTEM_DEF["sessionId"] = CDBSession::sessionGetId();
+	$COCKPIT_SYSTEM_DEF["userStatus"] = CDBSession::sessionGetStatus();
+	$COCKPIT_SYSTEM_DEF["cookie"] = $COCKPIT;
+	$COCKPIT_SYSTEM_DEF["userId"] = (int)CDBSession::sessionGetUserId();
+	$foo = CDBSession::getUserName($COCKPIT_SYSTEM_DEF['userId']);
+	$COCKPIT_SYSTEM_DEF["username"] = $foo['username'];
 
 	// check bootstrap.php
-	$SMITH_SYSTEM_DEF["protocol"] = CSettings::$HTTP_PROTOCOL;
+	$COCKPIT_SYSTEM_DEF["protocol"] = CSettings::$HTTP_PROTOCOL;
 
-	if(substr($_SERVER['REQUEST_URI'], 0, 4) == '/en/') $SMITH_SYSTEM_DEF["lang"] = 'en';
-	else if(substr($_SERVER['REQUEST_URI'], 0, 4) == '/ja/') $SMITH_SYSTEM_DEF["lang"] = 'ja';
-	else if(substr($_SERVER['REQUEST_URI'], 0, 4) == '/bn/') $SMITH_SYSTEM_DEF["lang"] = 'bn';
-	else $SMITH_SYSTEM_DEF["lang"] = 'en';
+	if(substr($_SERVER['REQUEST_URI'], 0, 4) == '/en/') $COCKPIT_SYSTEM_DEF["lang"] = 'en';
+	else if(substr($_SERVER['REQUEST_URI'], 0, 4) == '/ja/') $COCKPIT_SYSTEM_DEF["lang"] = 'ja';
+	else if(substr($_SERVER['REQUEST_URI'], 0, 4) == '/bn/') $COCKPIT_SYSTEM_DEF["lang"] = 'bn';
+	else $COCKPIT_SYSTEM_DEF["lang"] = 'en';
 	
 ?>

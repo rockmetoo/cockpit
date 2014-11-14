@@ -2,9 +2,9 @@
 
     include_once 'bootstrap.php';
 	include_once 'CDBSession.php';
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
-	if($SMITH_SYSTEM_DEF['userId'] > 0)
+	if($COCKPIT_SYSTEM_DEF['userId'] > 0)
 	{
 		header('Location: controlPanel.php');
 		exit;
@@ -13,10 +13,10 @@
 	include_once 'CDBLogin.php';
 	include_once 'CHelperFunctions.php';
 	include_once 'CFormValidator.php';
-	include_once 'includes/formValues' . $SMITH_SYSTEM_DEF["lang"] . '.php';
+	include_once 'includes/formValues' . $COCKPIT_SYSTEM_DEF["lang"] . '.php';
 	include_once 'CLocalization.php';
 	
-	$lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], 'signin.php');
+	$lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], 'signin.php');
 
 	//get the path for redirecting after login is successful
 	if(!isset($_GET['path']) || !$_GET['path'])

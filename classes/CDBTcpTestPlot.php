@@ -11,10 +11,10 @@
 		public static function createTcpTestPlot($insert)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
-			$query	= $db->quoteInto('SELECT null FROM tcpTestPlot WHERE userId=%s AND plotName=%s', array($SMITH_SYSTEM_DEF['userId'], $insert['plotName']));
-			$res	= $db->queryOther('smith', $query);
+			$query	= $db->quoteInto('SELECT null FROM tcpTestPlot WHERE userId=%s AND plotName=%s', array($COCKPIT_SYSTEM_DEF['userId'], $insert['plotName']));
+			$res	= $db->queryOther('cockpit', $query);
 				
 			if($res->num_rows) return false;
 				
@@ -70,7 +70,7 @@
 			$insert['plotName'] = str_replace('|', '', $insert['plotName']);
 				
 			$data = array(
-					'userId'				=> $SMITH_SYSTEM_DEF['userId'],
+					'userId'				=> $COCKPIT_SYSTEM_DEF['userId'],
 					'plotName'				=> $insert['plotName'],
 					'tcpControlBits'		=> $newTcpControlBits,
 					'baseAddress'			=> $baseAddress,
@@ -85,7 +85,7 @@
 					'dateUpdated'			=> date('Y-m-d H:i:s'),
 			);
 		
-			$id = $db->insertOther('smith', 'tcpTestPlot', $data);
+			$id = $db->insertOther('cockpit', 'tcpTestPlot', $data);
 				
 			return $id;
 		}

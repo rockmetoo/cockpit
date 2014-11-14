@@ -8,12 +8,12 @@
 	header("Content-Type: $content_type; charset=utf-8");
 
 	require_once('CDBSession.php');
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	require_once('CMail.php');
 	require_once('CFormValidator.php');
 	require_once('CHelperFunctions.php');
-	require_once('form_values_' . $SMITH_SYSTEM_DEF['lang'] . '.php');
+	require_once('form_values_' . $COCKPIT_SYSTEM_DEF['lang'] . '.php');
 
 	$is_std_browser = (Net_UserAgent_Detect::getBrowser(
 		array('firefox','opera','safari','gecko','konq'))

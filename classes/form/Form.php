@@ -133,7 +133,7 @@
 		public function getErrors(){
 			$errors = array();
 			$id = $this->attributes["id"];
-			if(!empty($SMITH_SYSTEM_DEF["pfbc"][$id]["errors"])) $errors = $COCKPIT_SYSTEM_DEF["pfbc"][$id]["errors"];
+			if(!empty($COCKPIT_SYSTEM_DEF["pfbc"][$id]["errors"])) $errors = $COCKPIT_SYSTEM_DEF["pfbc"][$id]["errors"];
 			return $errors;
 		}
 
@@ -149,8 +149,8 @@
 		 * This method restores the serialized form instance
 		 * */
 		private static function recover($id){
-			if(!empty($SMITH_SYSTEM_DEF["pfbc"][$id]["form"]))
-				return unserialize($SMITH_SYSTEM_DEF["pfbc"][$id]["form"]);
+			if(!empty($COCKPIT_SYSTEM_DEF["pfbc"][$id]["form"]))
+				return unserialize($COCKPIT_SYSTEM_DEF["pfbc"][$id]["form"]);
 		}
 
 		public function render($returnHTML = false){

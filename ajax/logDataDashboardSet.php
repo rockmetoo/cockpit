@@ -4,7 +4,7 @@
 	include_once 'CDBSession.php';
 	include_once 'CDBUser.php';
 	
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	if(ALLOWED_REFERRER !== ''
 		&& (!isset($_SERVER['HTTP_REFERER']) || strpos(strtoupper($_SERVER['HTTP_REFERER']),
@@ -19,7 +19,7 @@
 	
 	if($_POST['pos'])
 	{
-		$retVal = CDBUser::setLogDataDashboardPos($_POST['pos'], $SMITH_SYSTEM_DEF["user_id"]);
+		$retVal = CDBUser::setLogDataDashboardPos($_POST['pos'], $COCKPIT_SYSTEM_DEF["user_id"]);
 		echo $retVal;
 	}
 	else

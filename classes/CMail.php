@@ -143,10 +143,10 @@
 		 */
 		public static function prepareBody($template, $values, $html=1, $language='')
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
-			//if language is not set default to the language set in $SMITH_SYSTEM_DEF
-			if($language == '' || $SMITH_SYSTEM_DEF['lang'] == $language)
+			//if language is not set default to the language set in $COCKPIT_SYSTEM_DEF
+			if($language == '' || $COCKPIT_SYSTEM_DEF['lang'] == $language)
 			{
 				global $lang;
 			}
@@ -197,12 +197,12 @@
 		 */
 		public static function prepareTemplate($template, $values, $html = 1, $add_header = 'yes', $language = '', $employer = '')
 		{
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 				
 			//if language is not set default to the language set in SESSION_DEFS
 			if(!$language)
 			{
-				$language = $SMITH_SYSTEM_DEF['lang'];
+				$language = $COCKPIT_SYSTEM_DEF['lang'];
 			}
 			
 			include_once 'CLocalization.php';

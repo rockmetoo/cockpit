@@ -2,7 +2,7 @@
 	
 	include_once 'bootstrap.php';
 	include_once 'CDBSession.php';
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	
 ?>

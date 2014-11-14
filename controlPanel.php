@@ -2,7 +2,7 @@
 
 	require_once('bootstrap.php');
 	require_once('CDBSession.php');
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	// Only allow user who are logged in to view this page
 	CDBSession::validateUser();
@@ -11,18 +11,18 @@
 	require_once('CDBUserAcl.php');
 	require_once('CHelperFunctions.php');
 	require_once('CUserMenu.php');
-	require_once('formValues' . $SMITH_SYSTEM_DEF['lang'] . '.php');
+	require_once('formValues' . $COCKPIT_SYSTEM_DEF['lang'] . '.php');
 	require_once('CLocalization.php');
-	$lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], 'controlPanel.php');
+	$lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], 'controlPanel.php');
 
 	/********************* Reseource Allocation ****************************/
 
-	$MY_AVAILABLE_SERVICE = CDBUser::getUserServiceACL($SMITH_SYSTEM_DEF['userId']);
+	$MY_AVAILABLE_SERVICE = CDBUser::getUserServiceACL($COCKPIT_SYSTEM_DEF['userId']);
 	
 	/********************* Reseource Allocation ****************************/
 
 	// Rearrange Employer dashboard according to their change of widget
-	$quickLinkColumnsRearrange = CDBUser::rearrangeEmployerDashboard($SMITH_SYSTEM_DEF['userId'], array_keys($MY_AVAILABLE_SERVICE));
+	$quickLinkColumnsRearrange = CDBUser::rearrangeEmployerDashboard($COCKPIT_SYSTEM_DEF['userId'], array_keys($MY_AVAILABLE_SERVICE));
 	
 	// load quick link data
 	$quickLinkData = array();

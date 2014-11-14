@@ -631,7 +631,7 @@
 			$out = '';
 			$j = 1;
 			$rk = $rv = 0;
-			if($SMITH_SYSTEM_DEF['lang'] == 'ja') $all = '全て';
+			if($COCKPIT_SYSTEM_DEF['lang'] == 'ja') $all = '全て';
 			else $all = 'All';
 
 			$keys = array_keys($values);
@@ -699,7 +699,7 @@
 			$out = '';
 			$i = 1;
 			$rk = $rv = 0;
-			if($SMITH_SYSTEM_DEF['lang'] == 'ja') $all = '全て';
+			if($COCKPIT_SYSTEM_DEF['lang'] == 'ja') $all = '全て';
 			else $all = 'All';
 
 			while(list($k,$v) = each($values)) {

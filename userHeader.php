@@ -1,6 +1,6 @@
 <?php
 
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 
 	//all global js to js array.
 	$global_js_files = array('jquery.min.js', 'jquery.ui.js');
@@ -37,7 +37,7 @@
 	//what type of documents we are serving
 	mb_internal_encoding('UTF-8');
 	header('Content-Type: ' . $content_type['html'] . '; charset=utf-8');
-	$content_language = ($SMITH_SYSTEM_DEF['lang']) ? $COCKPIT_SYSTEM_DEF['lang'] : 'en';
+	$content_language = ($COCKPIT_SYSTEM_DEF['lang']) ? $COCKPIT_SYSTEM_DEF['lang'] : 'en';
 	header('Content-Language: ' . $content_language);
 	//prevent document caching
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');

@@ -179,16 +179,16 @@
 		public static function setPassword($old_password, $new_password, $re_new_password)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
 			if($new_password === $re_new_password)
 			{
 				include_once 'CDBLogin.php';
 				
-				$password = CDBLogin::getPassword($SMITH_SYSTEM_DEF['userId']);
+				$password = CDBLogin::getPassword($COCKPIT_SYSTEM_DEF['userId']);
 				if(md5($old_password) === $password)
 				{
-					$db->updateOther('siteUser', 'user', 'userId', $SMITH_SYSTEM_DEF['userId'],
+					$db->updateOther('siteUser', 'user', 'userId', $COCKPIT_SYSTEM_DEF['userId'],
 						array(
 							'password' => md5($new_password),
 							'lastChangedPassword'=>date('Y-m-d H:i:s')
@@ -210,7 +210,7 @@
 		public static function setSpecificUserSettings($userid, $user_status)
 		{
 			global $db;
-			global $SMITH_SYSTEM_DEF;
+			global $COCKPIT_SYSTEM_DEF;
 			
 			if($user_status === 1)
 			{
@@ -219,7 +219,7 @@
 						'userStatus' => $user_status,
 						'failedLoginCount' => 0,
 						'deactivatedDate' => date('Y-m-d H:i:s'),
-						'deactivatedBy' => $SMITH_SYSTEM_DEF['userId'],
+						'deactivatedBy' => $COCKPIT_SYSTEM_DEF['userId'],
 						'userStatusChangeDate' => date('Y-m-d H:i:s'),
 						'dateUpdated' => date('Y-m-d H:i:s')
 					)
@@ -233,7 +233,7 @@
 					array(
 						'userStatus' => $user_status,
 						'deactivatedDate' => date('Y-m-d H:i:s'),
-						'deactivatedBy' => $SMITH_SYSTEM_DEF['userId'],
+						'deactivatedBy' => $COCKPIT_SYSTEM_DEF['userId'],
 						'userStatusChangeDate' => date('Y-m-d H:i:s'),
 						'dateUpdated' => date('Y-m-d H:i:s')
 					)
@@ -269,7 +269,7 @@
 				
 				if($userId)
 				{
-					$employer_id = $db->insertOther('smith',  'userProfile',
+					$employer_id = $db->insertOther('cockpit',  'userProfile',
 						array(
 							'userId'			=> $userId,
 							'firstName'			=> $firstName,

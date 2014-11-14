@@ -4,13 +4,13 @@
 	include_once 'CDBSession.php';
 	include_once 'CDBHttpTestPlot.php';
 	
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
-	include_once 'formValues' . $SMITH_SYSTEM_DEF['lang'] . '.php';
+	include_once 'formValues' . $COCKPIT_SYSTEM_DEF['lang'] . '.php';
 	include_once 'CLocalization.php';
-	$lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], 'index.php');
+	$lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], 'index.php');
 	
-	if(!$SMITH_SYSTEM_DEF['userId'])
+	if(!$COCKPIT_SYSTEM_DEF['userId'])
 	{
 		$loginForm = '
 		<ul class="indexLoginHeader">
@@ -31,7 +31,7 @@
 	$css_files = array('style.css' => 'all');
 	$js_string = "";
 	
-	if($SMITH_SYSTEM_DEF['userId'])
+	if($COCKPIT_SYSTEM_DEF['userId'])
 	{
 		include_once 'userHeader.php';
 		include_once 'dcontents/indexHeader.php';
@@ -49,7 +49,7 @@
 		$totalHttpPlotExecuted = "9223372036854775807+";
 	}
 	
-	if(!$SMITH_SYSTEM_DEF['userId'])
+	if(!$COCKPIT_SYSTEM_DEF['userId'])
 	{
 ?>
 	<div id="main_container">
@@ -86,7 +86,7 @@
 		</div>
 	</div>
 <?php
-	if($SMITH_SYSTEM_DEF['userId'])
+	if($COCKPIT_SYSTEM_DEF['userId'])
 	{
 		include_once 'userFooter.php';
 	}

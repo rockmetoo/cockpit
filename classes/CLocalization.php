@@ -36,12 +36,14 @@
 				$trace = debug_backtrace();
 				$message .= "File : ".$trace[0]['file']."\n";
 				$message .= "Line : ".$trace[0]['line']."\n";
+				
 				CMail::send(
 					array(CSettings::$SYSTEM_MAIL_VALUES['noreply'], 'COCKPIT @ Gateway')
 					, array(CSettings::$SYSTEM_MAIL_VALUES['tech'], 'IT Gods')
 					, 'COCKPIT - Localization Error'
 					, $message, '', array(), array()
 				);
+				
 				return $index;
 			}
 		}

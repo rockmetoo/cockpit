@@ -2,7 +2,7 @@
 	
 	include_once 'bootstrap.php';
 	include_once 'CDBSession.php';
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	// Only allow user who are logged in to view this page
 	CDBSession::validateUser();
@@ -12,14 +12,14 @@
 	include_once 'CFormValidator.php';
 	include_once 'CHelperFunctions.php';
 	include_once 'CUserMenu.php';
-	include_once 'formValues' . $SMITH_SYSTEM_DEF['lang'] . '.php';
+	include_once 'formValues' . $COCKPIT_SYSTEM_DEF['lang'] . '.php';
 	include_once 'CLocalization.php';
-	$lang = new CLocalization($SMITH_SYSTEM_DEF['lang'], 'profileEdit.php');
+	$lang = new CLocalization($COCKPIT_SYSTEM_DEF['lang'], 'profileEdit.php');
 	
 	/********************* User Reseource Allocation ****************************/
 	
-	$SMITH_USER_DEF			= CDBUser::getUserDetails($SMITH_SYSTEM_DEF['userId']);
-	$MY_AVAILABLE_SERVICE	= CDBUser::getUserServiceACL($SMITH_SYSTEM_DEF['userId']);
+	$COCKPIT_USER_DEF			= CDBUser::getUserDetails($COCKPIT_SYSTEM_DEF['userId']);
+	$MY_AVAILABLE_SERVICE	= CDBUser::getUserServiceACL($COCKPIT_SYSTEM_DEF['userId']);
 	
 	/********************* User Reseource Allocation ****************************/
 

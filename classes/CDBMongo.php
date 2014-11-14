@@ -11,7 +11,7 @@
 		//stores session data results
 		private		$session;
 		
-		private		$defaultConnection = 'smith';
+		private		$defaultConnection = 'cockpit';
 
 		public function __construct($config = array())
 		{

@@ -3,9 +3,9 @@
 	include_once '../bootstrap.php';
 	include_once 'CDBSession.php';
 	include_once 'CDBHttpTestPlot.php';
-	include_once 'formValues' . $SMITH_SYSTEM_DEF['lang'] . '.php';
+	include_once 'formValues' . $COCKPIT_SYSTEM_DEF['lang'] . '.php';
 	
-	global $SMITH_SYSTEM_DEF;
+	global $COCKPIT_SYSTEM_DEF;
 	
 	if(ALLOWED_REFERRER !== ''
 		&& (!isset($_SERVER['HTTP_REFERER']) || strpos(strtoupper($_SERVER['HTTP_REFERER']),
